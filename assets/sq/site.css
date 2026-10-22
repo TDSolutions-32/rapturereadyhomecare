@@ -404,3 +404,26 @@ html{ -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 .sqs-block:has(.rr-site), .sqs-block-code:has(.rr-site), .sqs-block-content:has(.rr-site) { padding: 0 !important; margin: 0 !important; }
 .rr-site { display: block; width: 100%; overflow-x: clip; }
 .rr-site p, .rr-site li, .rr-site a, .rr-site h1, .rr-site h2, .rr-site h3 { text-transform: none; }
+/* Squarespace Form block, moved into .sq-form-slot by sq.js */
+.rr-site .sq-form-slot { display: block; }
+.rr-site .sq-form-slot .sq-form-wait { color: var(--muted); }
+.rr-site .sq-form-slot .sqs-block, .rr-site .sq-form-slot .sqs-block-content { padding: 0 !important; margin: 0 !important; }
+.rr-site .sq-form-slot h2, .rr-site .sq-form-slot .form-title { display: none !important; }
+.rr-site .sq-form-slot form { display: grid; gap: 1.2rem; font-family: var(--sans) !important; }
+.rr-site .sq-form-slot .form-item, .rr-site .sq-form-slot fieldset { margin: 0 !important; padding: 0 !important; border: 0 !important; width: 100% !important; }
+.rr-site .sq-form-slot .field-list { display: grid; gap: 1.2rem; }
+.rr-site .sq-form-slot label, .rr-site .sq-form-slot legend, .rr-site .sq-form-slot .title { font-family: var(--sans) !important; font-weight: 700 !important; font-size: 1.1rem !important; color: var(--ink) !important; letter-spacing: 0 !important; text-transform: none !important; margin-bottom: .4rem !important; }
+.rr-site .sq-form-slot .description { font-family: var(--sans) !important; color: var(--muted) !important; font-size: .95rem !important; }
+.rr-site .sq-form-slot .required { color: var(--muted) !important; font-weight: 400 !important; }
+.rr-site .sq-form-slot input[type=text], .rr-site .sq-form-slot input[type=email], .rr-site .sq-form-slot input[type=tel], .rr-site .sq-form-slot input:not([type]), .rr-site .sq-form-slot select, .rr-site .sq-form-slot textarea {
+  font: inherit !important; font-family: var(--sans) !important; font-size: 1.1rem !important; color: var(--ink) !important; background: #fff !important;
+  border: 1.5px solid #bfaaa7 !important; border-radius: var(--r-sm) !important; padding: .8rem .95rem !important; min-height: 54px !important; width: 100% !important; box-shadow: none !important; }
+.rr-site .sq-form-slot textarea { min-height: 120px !important; }
+.rr-site .sq-form-slot input:focus, .rr-site .sq-form-slot select:focus, .rr-site .sq-form-slot textarea:focus { border-color: var(--accent, #7a1c2a) !important; outline: 3px solid rgba(122, 28, 42, .18) !important; }
+.rr-site .sq-form-slot input[type=radio], .rr-site .sq-form-slot input[type=checkbox] { width: 1.2rem !important; height: 1.2rem !important; accent-color: var(--accent, #7a1c2a); }
+.rr-site .sq-form-slot .option { font-size: 1.1rem !important; margin: .35rem 0 !important; }
+.rr-site .sq-form-slot button, .rr-site .sq-form-slot input[type=submit], .rr-site .sq-form-slot .form-button-wrapper button {
+  width: 100% !important; min-height: 56px !important; border-radius: 999px !important; border: 0 !important; background: var(--accent, #7a1c2a) !important; color: #fff !important;
+  font-family: var(--sans) !important; font-weight: 700 !important; font-size: 1.15rem !important; letter-spacing: 0 !important; text-transform: none !important; padding: .9rem 1.5rem !important; cursor: pointer; }
+.rr-site .sq-form-slot .form-submission-text, .rr-site .sq-form-slot .form-submission-html { font-family: var(--sans) !important; font-size: 1.2rem !important; color: var(--ink) !important; background: #fff; border-radius: var(--r-md); padding: 1.25rem; }
+.rr-site .sq-form-slot .field-error { color: #b3261e !important; font-weight: 700; font-family: var(--sans) !important; }
