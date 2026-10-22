@@ -118,7 +118,7 @@
     const blocks = [...document.querySelectorAll('form')]
       .filter((f) => !f.closest('.rr-site') && !f.closest('[data-sq-form-slot]'))
       .map((f) => f.closest('.sqs-block') || f.closest('.form-wrapper') || f);
-    slots.forEach((slot, i) => {
+    slots.filter((sl) => !sl.querySelector('form')).forEach((slot, i) => {
       const block = blocks[i];
       if (!block) return;
       const section = block.closest('.page-section, section');
@@ -127,5 +127,13 @@
       if (section && !section.querySelector('.rr-site')) section.style.display = 'none';
     });
   };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+  // Squarespace draws its form after the page loads, so keep checking briefly.
+  let tries = 0;
+  const tick = () => {
+    const pending = [...document.querySelectorAll('[data-sq-form-slot]')].some((s) => !s.querySelector('form'));
+    if (!pending) return;
+    run();
+    if (++tries < 40) setTimeout(tick, 250);
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tick); else tick();
 })();
