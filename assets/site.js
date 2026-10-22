@@ -107,3 +107,24 @@
 
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 })();
+
+/* Squarespace edition: move the page's Squarespace Form block into the form slot so
+   submissions are stored in Squarespace. Does nothing on pages without a slot. */
+(() => {
+  if (window.top !== window.self) return; // inside the Squarespace editor
+  const run = () => {
+    const slots = [...document.querySelectorAll('[data-sq-form-slot]')];
+    if (!slots.length) return;
+    const blocks = [...document.querySelectorAll('.sqs-block-form, .form-block')]
+      .filter((b) => !b.closest('.rr-site') && !b.parentElement.closest('.sqs-block-form, .form-block'));
+    slots.forEach((slot, i) => {
+      const block = blocks[i];
+      if (!block) return;
+      const section = block.closest('.page-section, section');
+      slot.innerHTML = '';
+      slot.appendChild(block);
+      if (section && !section.querySelector('.rr-site')) section.style.display = 'none';
+    });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+})();
